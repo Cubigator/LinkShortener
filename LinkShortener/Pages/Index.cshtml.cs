@@ -12,7 +12,12 @@ namespace LinkShortener.Pages
             _logger = logger;
         }
 
-        public void OnGet()
+        public async Task OnGet()
+        {
+
+        }
+
+        public async Task OnPost([FromForm] string url)
         {
 
         }
