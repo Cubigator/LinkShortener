@@ -1,6 +1,14 @@
+using LinkShortenerDatabaseLib;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
+
+builder.Services.AddDbContext<ApplicationContext>(optionsBuilder =>
+{
+    optionsBuilder.UseNpgsql(builder.Configuration["POSTGRES_CONNECTION"]);
+});
 
 var app = builder.Build();
 
