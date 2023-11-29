@@ -1,4 +1,5 @@
 using LinkShortenerDatabaseLib;
+using LinkShortenerDatabaseLib.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,8 @@ builder.Services.AddDbContext<ApplicationContext>(optionsBuilder =>
 {
     optionsBuilder.UseNpgsql(builder.Configuration["POSTGRES_CONNECTION"]);
 });
+
+builder.Services.AddScoped<ILinkRepository, LinkRepository>();
 
 var app = builder.Build();
 
