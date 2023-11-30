@@ -1,3 +1,4 @@
+using LinkShortener.Services;
 using LinkShortenerDatabaseLib;
 using LinkShortenerDatabaseLib.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,8 @@ builder.Services.AddDbContext<ApplicationContext>(optionsBuilder =>
 });
 
 builder.Services.AddScoped<ILinkRepository, LinkRepository>();
+
+builder.Services.AddSingleton<ILinkGenerator, LinkShortener.Services.LinkGenerator>();
 
 var app = builder.Build();
 
