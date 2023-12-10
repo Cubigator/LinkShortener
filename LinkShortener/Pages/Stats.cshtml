@@ -1,0 +1,23 @@
+﻿@page
+@model LinkShortener.Pages.StatsModel
+@{
+    ViewData["Title"] = "Статистика переходов";
+}
+
+<form method="post">
+    <label>Введите укороченную ссылку, чтобы узнать количество переходов по ней:</label>
+    <input name="shortUrl" type="text" />
+    <input type="submit" />
+</form>
+
+<div>
+    <br />
+    <div>
+        @Html.ValidationMessage("notFound")
+    </div>
+    <br />
+    <p>
+        Переходов по ссылке:
+        @Model.NumberOfTransitions
+    </p>
+</div>

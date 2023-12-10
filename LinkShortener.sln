@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkShortener", "LinkShortener\LinkShortener.csproj", "{8A7362B9-CE68-423D-A379-3C9A8C7BFD90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkShortenerDatabaseLib", "LinkShortenerDatabaseLib\LinkShortenerDatabaseLib.csproj", "{4A4D8A58-290F-4A55-A013-DB28E5240137}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkShortenerDatabaseLib", "LinkShortenerDatabaseLib\LinkShortenerDatabaseLib.csproj", "{4A4D8A58-290F-4A55-A013-DB28E5240137}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
