@@ -33,6 +33,7 @@ namespace LinkShortener.Pages
                 {
                     return NotFound();
                 }
+                await _linkRepository.AddLinkTransitionByIdAsync(link!.Id);
                 return Redirect(link!.OldLink);
             }
             NewUrl = string.Empty;
