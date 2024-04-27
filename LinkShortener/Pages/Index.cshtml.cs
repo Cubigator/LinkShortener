@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using LinkShortenerDatabaseLib.Repositories;
 using LinkShortenerDatabaseLib.Entities;
+using IronBarCode;
 
 namespace LinkShortener.Pages
 {
@@ -13,6 +14,7 @@ namespace LinkShortener.Pages
         private readonly ILinkRepository _linkRepository;
 
         public string NewUrl { get; set; } = null!;
+        public string QR { get; set; } = null!;
 
         public IndexModel(ILogger<IndexModel> logger,
                           ILinkGenerator linkGenerator,
@@ -53,6 +55,11 @@ namespace LinkShortener.Pages
                 NumberOfTransitions = 0
             };
             await _linkRepository.AddLinkAsync(link);
+
+            GeneratedBarcode qr = IronBarCode.BarcodeWriter.CreateBarcode(NewUrl, BarcodeEncoding.QRCode);
+            byte[] buffer = qr.ToPngBinaryData();
+            var base64 = Convert.ToBase64String(buffer);
+            QR = "data:image/png;base64," + base64;
         }
     }
 }
