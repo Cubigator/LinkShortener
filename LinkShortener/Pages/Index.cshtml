@@ -7,6 +7,22 @@
 <form method="post">
     <label>Введите ссылку:</label>
     <input name="url" type="text"/>
+    <label>Длительность ссылки:</label>
+    <br>
+    <div>
+        <input type="radio" value="1" checked name="duration" id="radio_1" />1 день
+        <input type="radio" value="3" name="duration" id="radio_2" />3 дня
+        <input type="radio" value="" name="duration" id="user_duration_btn" />пользовательское количество дней
+        <br>
+        <input type="hidden" step="1" min="1" max="30" id="user_duration_value" name="user_duration" />
+    </div>
+    <br />
+    <label>Максимальное количество переходов по ссылке:</label>
+    <br />
+    <div>
+        <input type="number" step="1" min="1" value="1000" max="100000" name="transitions" />
+    </div>
+    <br>
     <input type="submit" />
 </form>
 
@@ -18,3 +34,19 @@
         
     </img>
 </div>
+
+
+<script>
+    function user_duration_click(){
+        document.getElementById("user_duration_value").type = "number";
+    }
+
+    function radio_click() {
+        document.getElementById("user_duration_value").type = "hidden";
+        document.getElementById("user_duration_value").value = "";
+    }
+
+    document.getElementById("user_duration_btn").onclick = user_duration_click;
+    document.getElementById("radio_1").onclick = radio_click;
+    document.getElementById("radio_2").onclick = radio_click;
+</script>
