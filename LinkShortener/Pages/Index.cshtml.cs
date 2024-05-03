@@ -73,7 +73,8 @@ namespace LinkShortener.Pages
                 ExpirationDate = DateTime.UtcNow.AddDays(resultDuration),
                 NewLink = "/" + generatedLink,
                 OldLink = url,
-                NumberOfTransitions = 0
+                NumberOfTransitions = 0,
+                MaximumTransitionsCount = transitions,
             };
             await _linkRepository.AddLinkAsync(link);
 

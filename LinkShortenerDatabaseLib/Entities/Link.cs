@@ -20,4 +20,6 @@ public class Link
     public DateTime ExpirationDate { get; set; }
     [Column("number_of_transitions")]
     public int NumberOfTransitions { get; set; }
+    [Column("maximum_transitions_count")]
+    public int MaximumTransitionsCount { get; set; }
 }
