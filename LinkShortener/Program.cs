@@ -1,3 +1,4 @@
+using LinkShortener.Backgrounds;
 using LinkShortener.Services;
 using LinkShortenerDatabaseLib;
 using LinkShortenerDatabaseLib.Repositories;
@@ -13,8 +14,11 @@ builder.Services.AddDbContext<ApplicationContext>(optionsBuilder =>
 });
 
 builder.Services.AddScoped<ILinkRepository, LinkRepository>();
+builder.Services.AddScoped<IScopedProcessingService, LinksScopedProcessingService>();
 
 builder.Services.AddSingleton<ILinkGenerator, LinkShortener.Services.LinkGenerator>();
+
+builder.Services.AddHostedService<LinksCleaner>();
 
 var app = builder.Build();
 

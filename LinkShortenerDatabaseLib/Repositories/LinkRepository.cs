@@ -27,6 +27,14 @@ public class LinkRepository : ILinkRepository
         }
     }
 
+    public async Task DeleteCompletedLinksAsync()
+    {
+        IEnumerable<Link> links = _context.Links
+            .Where(link => link.NumberOfTransitions > link.MaximumTransitionsCount);
+        _context.Links.RemoveRange(links);
+        await _context.SaveChangesAsync();
+    }
+
     public async Task DeleteExpiredLinksAsync()
     {
         IEnumerable<Link> links = _context.Links

@@ -8,6 +8,7 @@ public interface ILinkRepository
     Task<Link?> GetByOldLinkAsync(string oldLink);
     Task<Link?> GetByNewLinkAsync(string newLink);
     Task DeleteExpiredLinksAsync();
+    Task DeleteCompletedLinksAsync();
     Task AddLinkTransitionByIdAsync(int id);
     Task AddLinkAsync(Link link);
     Task DeleteLinkAsync(Link link);
