@@ -11,4 +11,6 @@ public class ApplicationContext : DbContext
     }
 
     public DbSet<Link> Links { get; set; }
+    public DbSet<Request> Requests { get; set; }
+    public DbSet<IPStat> IPStats { get; set; }
 }
