@@ -12,17 +12,20 @@ namespace LinkShortener.Pages
         private readonly ILogger<IndexModel> _logger;
         private readonly ILinkGenerator _linkGenerator;
         private readonly ILinkRepository _linkRepository;
+        private readonly IIPStatRepository _ipStatRepository;
 
         public string NewUrl { get; set; } = null!;
         public string QR { get; set; } = null!;
 
         public IndexModel(ILogger<IndexModel> logger,
                           ILinkGenerator linkGenerator,
-                          ILinkRepository linkRepository)
+                          ILinkRepository linkRepository,
+                          IIPStatRepository iPStatRepository)
         {
             _logger = logger;
             _linkGenerator = linkGenerator;
             _linkRepository = linkRepository;
+            _ipStatRepository = iPStatRepository;
         }
 
         public async Task<IActionResult> OnGet()
@@ -82,6 +85,12 @@ namespace LinkShortener.Pages
             byte[] buffer = qr.ToPngBinaryData();
             var base64 = Convert.ToBase64String(buffer);
             QR = "data:image/png;base64," + base64;
+
+            await _ipStatRepository.AddRequestAsync(new Request()
+            {
+                Ip = HttpContext.Connection.RemoteIpAddress!.ToString(),
+                Time = DateTime.UtcNow,
+            });
         }
     }
 }

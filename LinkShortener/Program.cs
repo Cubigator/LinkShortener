@@ -14,6 +14,7 @@ builder.Services.AddDbContext<ApplicationContext>(optionsBuilder =>
 });
 
 builder.Services.AddScoped<ILinkRepository, LinkRepository>();
+builder.Services.AddScoped<IIPStatRepository, IPStatRepository>();
 builder.Services.AddScoped<IScopedProcessingService, LinksScopedProcessingService>();
 
 builder.Services.AddSingleton<ILinkGenerator, LinkShortener.Services.LinkGenerator>();
