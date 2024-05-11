@@ -14,11 +14,13 @@ builder.Services.AddDbContext<ApplicationContext>(optionsBuilder =>
 });
 
 builder.Services.AddScoped<ILinkRepository, LinkRepository>();
+builder.Services.AddScoped<IIPStatRepository, IPStatRepository>();
 builder.Services.AddScoped<IScopedProcessingService, LinksScopedProcessingService>();
 
 builder.Services.AddSingleton<ILinkGenerator, LinkShortener.Services.LinkGenerator>();
 
 builder.Services.AddHostedService<LinksCleaner>();
+builder.Services.AddHostedService<IpStatWorker>();
 
 var app = builder.Build();
 

@@ -3,7 +3,7 @@
 public class LinksCleaner : BackgroundService
 {
     private readonly IServiceScopeFactory _scopeFactory;
-    private readonly TimeSpan _interval = TimeSpan.FromMinutes(1);
+    private readonly TimeSpan _interval = TimeSpan.FromDays(1);
 
     public LinksCleaner(IServiceScopeFactory scopeFactory)
     {
