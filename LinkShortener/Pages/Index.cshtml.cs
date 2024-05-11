@@ -67,6 +67,14 @@ namespace LinkShortener.Pages
                 return;
             }
 
+            LinkShortenerDatabaseLib.Entities.IPStat? ipStat = 
+                await _ipStatRepository.GetStatisticsAsync(HttpContext.Connection.RemoteIpAddress!.ToString());
+
+            if(ipStat != null && ipStat.RequestsCount > 10)
+            {
+                return;
+            }
+
             string generatedLink = _linkGenerator.GenerateLink(url);
             NewUrl = $"{HttpContext.Request.Host}/{generatedLink}";
             double resultDuration = (double)((duration is null) ? userDuration : duration)!;

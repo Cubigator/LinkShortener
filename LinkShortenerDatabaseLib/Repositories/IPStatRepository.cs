@@ -50,4 +50,9 @@ public class IPStatRepository : IIPStatRepository
         _context.Requests.RemoveRange(oldRequests);
         await _context.SaveChangesAsync();
     }
+
+    public async Task<IPStat?> GetStatisticsAsync(string ip)
+    {
+        return (await _context.IPStats.FirstOrDefaultAsync(stat => stat.Ip == ip));
+    }
 }
