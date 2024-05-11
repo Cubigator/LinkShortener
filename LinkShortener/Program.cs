@@ -20,6 +20,7 @@ builder.Services.AddScoped<IScopedProcessingService, LinksScopedProcessingServic
 builder.Services.AddSingleton<ILinkGenerator, LinkShortener.Services.LinkGenerator>();
 
 builder.Services.AddHostedService<LinksCleaner>();
+builder.Services.AddHostedService<IpStatWorker>();
 
 var app = builder.Build();
 
